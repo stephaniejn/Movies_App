@@ -1,0 +1,15 @@
+li{
+	 list-style-type: none;
+}
+
+.moviebar{
+	background-image: url(/FilmReel.png);
+	background-repeat: repeat-x;
+	height: 80px;
+	background-size: auto 80px;
+}
+
+body{
+	background-color: #BC9D51;
+	font-family: courier;
+}

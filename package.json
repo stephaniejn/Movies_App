@@ -1,0 +1,25 @@
+{
+  "name": "Movies_App",
+  "version": "1.0.0",
+  "description": "Movies_App ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephaniejn/Movies_App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephaniejn/Movies_App/issues"
+  },
+  "homepage": "https://github.com/stephaniejn/Movies_App",
+  "dependencies": {
+    "body-parser": "^1.9.3",
+    "ejs": "^1.0.0",
+    "express": "^4.10.4",
+    "request": "^2.49.0"
+  }
+}
