@@ -9,6 +9,11 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
+// Root Page
+app.get("", function(req,res){
+  res.render('movies/home');
+})
+
 // Home Page
 app.get("/movies/home", function(req,res){
 	res.render('movies/home');
