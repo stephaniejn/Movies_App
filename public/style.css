@@ -1,5 +1,18 @@
 li{
 	 list-style-type: none;
+	 padding-top: 20px;
+}
+
+#footer{
+	position:fixed;
+   left:0px;
+   bottom:0px;
+   height:80px;
+   width:100%;
+}
+
+#form{
+	padding-top: 100px;
 }
 
 .moviebar{
