@@ -1,10 +1,56 @@
+
+h1{
+	text-align: center;
+}
+
+#oscars{
+       max-height: 25px;  
+    max-width: 160px;  
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;  
+}
+
+a.class1 {color:#0C5521;}
+a.class1:link  {text-decoration: none; color: #0C5521;}
+a.class1:visited {text-decoration: none; color: #0C5521;}
+a.class1:hover {text-decoration: underline; color: #0C5521;}
+a.class1:active {text-decoration: none; color: #0C5521;}
+
+.color{
+	color: #0C5521;
+}
+
 li{
 	 list-style-type: none;
 	 padding-top: 20px;
 }
 
+
+img{
+	float: right;
+	padding-bottom: 80px;
+}
+
+a:link  {text-decoration: none; color: #464447;}
+a:visited {text-decoration: none; color: #464447;}
+a:hover {text-decoration: underline; color: #464447;}
+a:active {text-decoration: none; color: #464447;}
+
+#forms{
+	 display: inline-block;
+	 float: left;
+}
+
 #first{
 	font-size: 20px;
+}
+
+.container-fluid{
+	background-color: #BC9D51;
 }
 
 #footer{

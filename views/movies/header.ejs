@@ -1,13 +1,38 @@
 <html>
 <head>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 
-    <div class="moviebar" "header">
+	<div class="moviebar" "header">
 
-    </div>
+	</div>
 
-  <div class="container">
+	<!-- Navigation bar -->
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
  
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+      <ul class="navbar-form navbar-left">
+        <form action = '/movies/search' method = 'get' id="form">
+			<input type = 'text' name = 'title' placeholder= 'Film Title'>
+			<input type = 'submit' value = 'Search for Film'>
+		</form>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li> <form method="link" action="/movies/watchlist">
+			<input type="submit" value="Go to Watch List">
+		</form></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+

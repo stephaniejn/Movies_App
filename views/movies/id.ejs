@@ -1,14 +1,20 @@
 
 <% include header %>
+<form action= '/save' method="post">
+<input type="hidden" name="title" value="<%= Title %>">
+<input type="hidden" name="year" value="<%= Year %>">
+<input type="hidden" name="imdb_code" value="<%= imdbID %>">
+<input type="submit" value="Add to Watch List">
 
-<h1> The Film: </h1>
-<li> Title: <%= Title %></li>
+</form>
+<div> <h1> The Film </h1> <img src= <%= Poster %>></div>
+<li> Title: <%= Title %></li> 
 <li> Year: <%= Year %></li>
 <li> Genre: <%= Genre %></li>
 <li> Actors: <%= Actors %></li>
 <li> Rotten Tomatoes Score: <%= tomatoRating %></li>
 <br>
-<img src= <%= Poster %>>
+
 
 
 <% include footer %>

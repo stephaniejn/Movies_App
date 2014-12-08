@@ -1,0 +1,19 @@
+
+<% include header %>
+
+<%for(var i =0; i<movies.length; i++){%>
+<li>
+	<div class="color"><a href='/movies/<%= movies[i].imdb_code %>' class="class1">
+		<%= movies[i].title %></a>
+		(<%= movies[i].year %>)</div>
+		<div style="line-height:75%;">
+			<br>
+		</div>
+		<form action= '/movies/watchlist' method="post">
+			<input type="hidden" name="imdb_code" value="<%= movies[i].imdb_code%>">
+			<input type="submit" value="Delete Resource">
+		</form>
+	</li>
+	<%}%>
+
+	<% include footer %>
