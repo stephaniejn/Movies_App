@@ -45,7 +45,7 @@ app.post("/save", function(req,res){
 
 // Go to watch list page
 app.get("/movies/watchlist", function(req,res){
-var data= db.Watch.findAll().then(function(data){ 
+var data= db.Watch.findAll({order: 'id ASC'}).then(function(data){ 
   // res.send(data)
 
   res.render('movies/watchlist', {"movies": data});
