@@ -4,8 +4,8 @@
 	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-
-	<div class="moviebar" "header">
+<div class="container1">
+	<div class="moviebar" id="header">
 
 	</div>
 
@@ -19,13 +19,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="navbar-form navbar-left">
+      <ul id="nav1" class="navbar-form navbar-left">
         <form action = '/movies/search' method = 'get' id="form">
 			<input type = 'text' name = 'title' placeholder= 'Film Title'>
 			<input type = 'submit' value = 'Search for Film'>
 		</form>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul id="nav2" class="nav navbar-nav navbar-right">
         <li> <form method="link" action="/movies/watchlist">
 			<input type="submit" value="Go to Watch List">
 		</form></li>
@@ -33,6 +33,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+</div>
 
 <div class="container">
 

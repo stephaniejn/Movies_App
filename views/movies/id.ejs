@@ -6,15 +6,24 @@
 <input type="hidden" name="imdb_code" value="<%= imdbID %>">
 <input type="submit" value="Add to Watch List">
 
+
 </form>
-<div> <h1> The Film </h1> <img src= <%= Poster %>></div>
+<img id="poster" src= <%= Poster %>>
+<div> <h1> The Film </h1> 
 <li> Title: <%= Title %></li> 
 <li> Year: <%= Year %></li>
 <li> Genre: <%= Genre %></li>
 <li> Actors: <%= Actors %></li>
 <li> Rotten Tomatoes Score: <%= tomatoRating %></li>
 <br>
+</div>
 
+<script>
+ var tomato = parseInt(<%= tomatoRating %>);          
+if (tomato <6) { 
+   alert("Are you sure you want to watch this...?")
+} 
+ </script>
 
 
 <% include footer %>

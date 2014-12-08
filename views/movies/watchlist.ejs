@@ -1,12 +1,14 @@
 
 <% include header %>
 
+<h1> Watch List </h1>
+
 <%for(var i =0; i<movies.length; i++){%>
 <li>
 	<div class="color"><a href='/movies/<%= movies[i].imdb_code %>' class="class1">
 		<%= movies[i].title %></a>
 		(<%= movies[i].year %>)</div>
-		<div style="line-height:75%;">
+		<div style="line-height:50%;">
 			<br>
 		</div>
 		<form action= '/movies/watchlist' method="post">

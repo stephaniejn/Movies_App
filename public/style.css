@@ -3,15 +3,32 @@ h1{
 	text-align: center;
 }
 
+
+body{
+	padding-top: 200px;
+	background-color: #BC9D51;
+	font-family: courier;
+	height:100%;
+	margin-bottom: 100px;
+}
+
+.container{
+	margin-top: -50px;
+}
+
 #oscars{
-       max-height: 25px;  
+    max-height: 25px;  
     max-width: 160px;  
     position: absolute;  
     top: 0;  
-    bottom: 0;  
+    bottom: 200;  
     left: 0;  
-    right: 0;  
-    margin: auto;  
+    right: 200;  
+    margin: auto; 
+}
+
+#home_button{
+	margin-top: -50px;
 }
 
 a.class1 {color:#0C5521;}
@@ -30,9 +47,12 @@ li{
 }
 
 
-img{
+#poster{
 	float: right;
 	padding-bottom: 80px;
+	margin-top: -30px;
+	width: 30%;
+	height: auto;
 }
 
 a:link  {text-decoration: none; color: #464447;}
@@ -53,6 +73,15 @@ a:active {text-decoration: none; color: #464447;}
 	background-color: #BC9D51;
 }
 
+.container1{
+	position: fixed;  
+    width: 100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 1;  
+    border-top: 0;
+}
+
 #footer{
 	position:fixed;
    left:0px;
@@ -65,14 +94,19 @@ a:active {text-decoration: none; color: #464447;}
 	padding-top: 30px;
 }
 
+#nav1{
+	margin-top: -20px;
+	margin-bottom: -2px;
+}
+
+#nav2{
+	margin-top: -10px;
+	margin-bottom: -2px;
+}
+
 .moviebar{
 	background-image: url(/FilmReel.png);
 	background-repeat: repeat-x;
 	height: 80px;
 	background-size: auto 80px;
-}
-
-body{
-	background-color: #BC9D51;
-	font-family: courier;
 }
