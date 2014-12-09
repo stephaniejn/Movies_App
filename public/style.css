@@ -3,6 +3,19 @@ h1{
 	text-align: center;
 }
 
+#top{
+		left: 20%;
+		position: fixed;
+	}
+
+#div5 {
+    display: none;
+    height: 25px;
+    font-size: 14px;
+    color: #F7F7F7;
+
+}
+
 body{
 	padding-top: 200px;
 	background-color: #BC9D51;
@@ -11,7 +24,6 @@ body{
 	margin-bottom: 100px;
 }
 
-
 .container{
 	margin-top: -50px;
 }
@@ -19,12 +31,13 @@ body{
 #oscars{
     max-height: 25px;  
     max-width: 160px;  
-    position: absolute;  
+    position: fixed;  
     top: 0;  
-    bottom: 200;  
+    bottom: 0;  
     left: 0;  
     right: 200;  
     margin: auto; 
+    margin-top: 250px;
 }
 
 #home_button{
