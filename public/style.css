@@ -8,6 +8,10 @@ h1{
 		position: fixed;
 	}
 
+#home{
+	padding-left: 10px
+}
+
 #div5 {
     display: none;
     height: 25px;
@@ -84,7 +88,8 @@ a:active {text-decoration: none; color: #464447;}
 }
 
 .container-fluid{
-	background-color: #BC9D51;
+	background-color: #AB8024;
+	z-index: 2
 }
 
 .container1{

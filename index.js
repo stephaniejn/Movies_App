@@ -26,11 +26,9 @@ var searchTerm = req.query.title
   request("http://www.omdbapi.com/?s=" + searchTerm, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var stuff = JSON.parse(body);
-      // console.log(stuff["Search"])
       res.render("movies/search", stuff)
     } else {
       res.render("errorPage")
-      // console.log("ERRR000R");
     }
 });
 })
@@ -38,10 +36,9 @@ var searchTerm = req.query.title
 
 // Ajax - Add Info to Watch List
 app.post("/movies/:id", function(req,res){
-  db.Watch.findOrCreate({where: req.body})
-  .then(function(data) {
-    res.send({item: data});
-});
+  db.Watch.findOrCreate({where: req.body}).spread(function(data,created) {
+    res.send({wasCreated:created,item:data});
+}).catch(function(err){if(err) throw err;})
 });
 
 // Spread
@@ -61,7 +58,6 @@ app.post("/movies/:id", function(req,res){
 // Go to watch list page
 app.get("/movies/watchlist", function(req,res){
 var data= db.Watch.findAll({order: 'id ASC'}).then(function(data){ 
-  // res.send(data)
 
   res.render('movies/watchlist', {"movies": data});
 })
@@ -86,18 +82,34 @@ app.delete("/movies/watchlist/:id", function(req,res){
 })
 
 // IMDB Info
+// app.get("/movies/:imdb", function(req, res){
+// 	var id = req.params.imdb
+// 	request("http://www.omdbapi.com/?i=" + id +"&tomatoes=true&", function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//     	var results = JSON.parse(body);
+//       res.render("movies/id", results)
+//     } else {
+//       res.render("errorPage")
+//     }
+// });
+// })
+
+// Not Working - To disable Add to Watchlist Button
 app.get("/movies/:imdb", function(req, res){
-	var id = req.params.imdb
-	request("http://www.omdbapi.com/?i=" + id +"&tomatoes=true&", function (error, response, body) {
+  var id = req.params.imdb
+  request("http://www.omdbapi.com/?i=" + id +"&tomatoes=true&", function (error, response, body) {
     if (!error && response.statusCode == 200) {
-    	var results = JSON.parse(body);
-      // console.log(results)
-      res.render("movies/id", results)
+      var results = JSON.parse(body);
+      // console.log(results);
+      db.Watch.count({where: {imdb_code:results.imdbID}}).then(function(foundItemCount){
+        var wasFound= foundItemCount > 0;
+        res.render("movies/id", {movieFound: wasFound, item: results})
+    })
     } else {
       res.render("errorPage")
-      // console.log("ERRR000R");
     }
 });
 })
 
 app.listen(process.env.PORT || 3000);
+

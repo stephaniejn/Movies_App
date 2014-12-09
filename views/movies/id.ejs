@@ -1,35 +1,38 @@
-
 <% include header %>
 <div id="fade">
-<div>
-<input type="submit" value="Add to Watch List" a href="#" data-title="<%= Title %>" data-year="<%= Year %>" data-imdb_code="<%= imdbID %>" class="button add"></a>
-<input type="hidden" name="title" value="<%= Title %>">
-<input type="hidden" name="year" value="<%= Year %>">
-<input type="hidden" name="imdb_code" value="<%= imdbID %>">
-</div>
+	<div>
+		<%if (movieFound) {%>
+			<button type="button" disabled>Film is in Watch List</button>
+		<% } else { %>
+		<input type="submit" value="Add to Watch List" a href="#" data-title="<%= item.Title %>" data-year="<%= item.Year %>" data-imdb_code="<%= item.imdbID %>" class="button add"></a>
+		<%}%>
+		<!-- <input type="hidden" name="title" value="<%= item.Title %>">
+		<input type="hidden" name="year" value="<%= item.Year %>">
+		<input type="hidden" name="imdb_code" value="<%= item.imdbID %>"> -->
+	</div>
 </div>
 
 <div id="div5"> Added to Watchlist! </div>
 
 </form>
-<img id="poster" src= <%= Poster %>>
+<img id="poster" src= <%= item.Poster %>>
 <div> <h1> The Film </h1> 
-<li> Title: <%= Title %></li> 
-<li> Year: <%= Year %></li>
-<li> Genre: <%= Genre %></li>
-<li> Actors: <%= Actors %></li>
-<li> Rotten Tomatoes Score: <%= tomatoRating %></li>
-<br>
+	<li> Title: <%= item.Title %></li> 
+	<li> Year: <%= item.Year %></li>
+	<li> Genre: <%= item.Genre %></li>
+	<li> Actors: <%= item.Actors %></li>
+	<li> Rotten Tomatoes Score: <%= item.tomatoRating %></li>
+	<br>
 </div>
 
 
 
 <script>
- var tomato = parseInt(<%= tomatoRating %>);          
-if (tomato <6) { 
-   alert("Are you sure you want to watch this...?")
-} 
- </script>
+	var tomato = parseInt(<%= item.tomatoRating %>);          
+	if (tomato <6) { 
+		alert("Are you sure you want to watch this...?")
+	} 
+</script>
 
 
 <% include footer %>
