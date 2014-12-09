@@ -50,6 +50,7 @@ li{
 #poster{
 	float: right;
 	padding-bottom: 80px;
+	padding-top: 20px;
 	margin-top: -30px;
 	width: 30%;
 	height: auto;
