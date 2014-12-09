@@ -26,22 +26,37 @@ var searchTerm = req.query.title
   request("http://www.omdbapi.com/?s=" + searchTerm, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var stuff = JSON.parse(body);
-      console.log(stuff["Search"])
+      // console.log(stuff["Search"])
       res.render("movies/search", stuff)
     } else {
       res.render("errorPage")
-      console.log("ERRR000R");
+      // console.log("ERRR000R");
     }
 });
 })
 
-// Go to thanks page & Add info to Watch List
-app.post("/save", function(req,res){
-  db.Watch.findOrCreate({where: { title: req.body.title, year: req.body.year, imdb_code: req.body.imdb_code }})
-  .then(function(Watch) {
-    res.render('movies/thanks');
+
+// Ajax - Add Info to Watch List
+app.post("/movies/:id", function(req,res){
+  db.Watch.findOrCreate({where: req.body})
+  .then(function(data) {
+    res.send({item: data});
 });
 });
+
+// Spread
+// spread(function(data,created) {
+//     res.send({wasCreated:created,item:data});
+// });
+// });
+
+// Go to thanks page & Add info to Watch List - Previous Way
+// app.post("/save", function(req,res){
+//   db.Watch.findOrCreate({where: { title: req.body.title, year: req.body.year, imdb_code: req.body.imdb_code }})
+//   .then(function(Watch) {
+//     res.render('movies/thanks');
+// });
+// });
 
 // Go to watch list page
 app.get("/movies/watchlist", function(req,res){
@@ -52,13 +67,22 @@ var data= db.Watch.findAll({order: 'id ASC'}).then(function(data){
 })
 })
 
-// Delete
-app.post("/movies/watchlist", function(req,res){
-  // res.send(req.body);
-  db.Watch.find({ where: {imdb_code: req.body.imdb_code}})
-  .then(function(Watch){
-  Watch.destroy().success(function() {res.redirect('/movies/watchlist')})
-})
+// Delete using method_override
+// app.post("/movies/watchlist", function(req,res){
+//   // res.send(req.body);
+//   db.Watch.find({ where: {imdb_code: req.body.imdb_code}})
+//   .then(function(Watch){
+//   Watch.destroy().success(function() {res.redirect('/movies/watchlist')})
+// })
+// })
+
+// Delete using Ajax
+app.delete("/movies/watchlist/:id", function(req,res){
+  db.Watch.destroy({where: {id: req.params.id}})
+  .then(function(deleteCount){
+    res.send({deleted: deleteCount})
+  })
+
 })
 
 // IMDB Info
@@ -67,11 +91,11 @@ app.get("/movies/:imdb", function(req, res){
 	request("http://www.omdbapi.com/?i=" + id +"&tomatoes=true&", function (error, response, body) {
     if (!error && response.statusCode == 200) {
     	var results = JSON.parse(body);
-      console.log(results)
+      // console.log(results)
       res.render("movies/id", results)
     } else {
       res.render("errorPage")
-      console.log("ERRR000R");
+      // console.log("ERRR000R");
     }
 });
 })

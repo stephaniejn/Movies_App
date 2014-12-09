@@ -11,10 +11,17 @@
 		<div style="line-height:50%;">
 			<br>
 		</div>
-		<form action= '/movies/watchlist' method="post">
-			<input type="hidden" name="imdb_code" value="<%= movies[i].imdb_code%>">
-			<input type="submit" value="Delete Resource">
-		</form>
+
+		<div>
+		<input type="submit" value="Delete Entry" a href="#" data-id="<%= movies[i].id %>" class="button deleteFav"></a>
+		</div>
+		<!-- Delete using form -->
+	<!-- <form action= '/movies/watchlist' method="post"> -->
+			<!-- <input type="hidden" name="imdb_code" value="<%= movies[i].imdb_code%>"> -->
+			<!-- <input type="submit" value="Delete Resource"> -->
+		<!-- </form>  -->
+
+
 	</li>
 	<%}%>
 

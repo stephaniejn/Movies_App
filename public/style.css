@@ -3,7 +3,6 @@ h1{
 	text-align: center;
 }
 
-
 body{
 	padding-top: 200px;
 	background-color: #BC9D51;
@@ -11,6 +10,7 @@ body{
 	height:100%;
 	margin-bottom: 100px;
 }
+
 
 .container{
 	margin-top: -50px;

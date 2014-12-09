@@ -1,10 +1,12 @@
 
 <% include header %>
-<form action= '/save' method="post">
+<div>
+<input type="submit" value="Add to Watch List" a href="#" data-title="<%= Title %>" data-year="<%= Year %>" data-imdb_code="<%= imdbID %>" class="button add"></a>
 <input type="hidden" name="title" value="<%= Title %>">
 <input type="hidden" name="year" value="<%= Year %>">
 <input type="hidden" name="imdb_code" value="<%= imdbID %>">
-<input type="submit" value="Add to Watch List">
+</div>
+
 
 
 </form>
