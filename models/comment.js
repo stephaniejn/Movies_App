@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
         models.comment.belongsTo(models.watch)
         // associations can be defined here
       }
+    },
+    hooks: {
+      beforeCreate: function(data, fn){
+        return data.text = data.text.toLowerCase();
+      }
     }
   });
 

@@ -8,6 +8,15 @@ h1{
 		position: fixed;
 	}
 
+#comment_title{
+	font-size: 24px;
+}
+
+#commentbtn{
+	float: right;
+
+}
+
 #home{
 	padding-left: 10px
 }

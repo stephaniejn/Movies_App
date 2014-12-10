@@ -44,9 +44,12 @@ app.post("/movies/:id", function(req,res){
 // Comments Page
 app.get("/movies/watchlist/:id/comments",function(req,res){
 var commentID = req.params.id
-db.comment.findAll({where:{watchId:commentID}}).then(function(returnMe){
+db.watch.find({where: {id: req.params.id}}).then(function(watchThing){
+  // res.send(watchThing)
+  db.comment.findAll({where:{watchId:commentID}}).then(function(returnMe){
   // res.send({returnMe:returnMe})
-res.render("movies/comments", {commentID:commentID, returnMe:returnMe})
+res.render("movies/comments", {commentID:commentID, returnMe:returnMe, watchThing:watchThing})
+})
 })
 })
 
