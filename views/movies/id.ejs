@@ -12,16 +12,16 @@
 	</div>
 </div>
 
-<div id="div5"> Added to Watchlist! </div>
+<div id="div5"> <button type="button" disabled>Added to Watch List!</button> </div>
 
 </form>
 <img id="poster" src= <%= item.Poster %>>
 <div> <h1> The Film </h1> 
-	<li> Title: <%= item.Title %></li> 
-	<li> Year: <%= item.Year %></li>
-	<li> Genre: <%= item.Genre %></li>
-	<li> Actors: <%= item.Actors %></li>
-	<li> Rotten Tomatoes Score: <%= item.tomatoRating %></li>
+	<li> <strong>Title:</strong> <%= item.Title %></li> 
+	<li> <strong>Year: </strong> <%= item.Year %></li>
+	<li> <strong>Genre: </strong> <%= item.Genre %></li>
+	<li> <strong>Actors: </strong><%= item.Actors %></li>
+	<li> <strong> Rotten Tomatoes Score: </strong> <%= item.tomatoRating %></li>
 	<br>
 </div>
 
