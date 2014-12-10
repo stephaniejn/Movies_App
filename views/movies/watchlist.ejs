@@ -13,8 +13,13 @@
 		</div>
 
 		<div>
-		<input type="submit" value="Delete Entry" a href="#" data-id="<%= movies[i].id %>" class="button deleteFav"></a>
-		</div>
+		<input type="submit" value="Delete Entry" a href="#" data-id="<%= movies[i].id %>" class="button deleteFav"></a> 
+
+		<form action = '/movies/watchlist/<%= movies[i].id%>/comments' method = 'get'>
+			<input type="hidden" name="id" value="<%= movies[i].id%>">
+           <input type = 'submit' value = 'Add Comment'>
+         </form>
+
 		<!-- Delete using form -->
 	<!-- <form action= '/movies/watchlist' method="post"> -->
 			<!-- <input type="hidden" name="imdb_code" value="<%= movies[i].imdb_code%>"> -->

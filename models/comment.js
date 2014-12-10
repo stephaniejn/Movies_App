@@ -1,18 +1,17 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var watch = sequelize.define("watch", {
-    imdb_code: DataTypes.STRING,
-    title: DataTypes.STRING,
-    year: DataTypes.STRING
+  var comment = sequelize.define("comment", {
+    text: DataTypes.STRING,
+    watchId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        models.watch.hasMany(models.comment)
+        models.comment.belongsTo(models.watch)
         // associations can be defined here
       }
     }
   });
 
-  return watch;
+  return comment;
 };

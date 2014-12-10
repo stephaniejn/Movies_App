@@ -1,0 +1,10 @@
+<% include header %>
+<form action= '/movies/watchlist/<%=commentID%>/comments' method="post">
+			<input type="text" name="text">
+			<input type="submit" value="Add Comment">
+		</form>
+<%for(var i =0; i<returnMe.length; i++){%>
+	 <div><%=returnMe[i].text%></div>
+<%}%>
+
+<% include footer %>

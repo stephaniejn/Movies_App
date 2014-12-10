@@ -36,10 +36,31 @@ var searchTerm = req.query.title
 
 // Ajax - Add Info to Watch List
 app.post("/movies/:id", function(req,res){
-  db.Watch.findOrCreate({where: req.body}).spread(function(data,created) {
+  db.watch.findOrCreate({where: req.body}).spread(function(data,created) {
     res.send({wasCreated:created,item:data});
 }).catch(function(err){if(err) throw err;})
 });
+
+// Comments Page
+app.get("/movies/watchlist/:id/comments",function(req,res){
+var commentID = req.params.id
+db.comment.findAll({where:{watchId:commentID}}).then(function(returnMe){
+  // res.send({returnMe:returnMe})
+res.render("movies/comments", {commentID:commentID, returnMe:returnMe})
+})
+})
+
+
+
+// Display comments
+app.post("/movies/watchlist/:id/comments",function(req,res){
+  db.watch.find({where: {id: req.params.id}}).then(function(newComment){
+  newComment.createComment({text: req.body.text, watch_id:req.params.id})
+  .then(function(theComment){
+    res.redirect("comments")
+  })
+})
+})
 
 // Spread
 // spread(function(data,created) {
@@ -57,7 +78,7 @@ app.post("/movies/:id", function(req,res){
 
 // Go to watch list page
 app.get("/movies/watchlist", function(req,res){
-var data= db.Watch.findAll({order: 'id ASC'}).then(function(data){ 
+var data= db.watch.findAll({order: 'id ASC'}).then(function(data){ 
 
   res.render('movies/watchlist', {"movies": data});
 })
@@ -74,7 +95,7 @@ var data= db.Watch.findAll({order: 'id ASC'}).then(function(data){
 
 // Delete using Ajax
 app.delete("/movies/watchlist/:id", function(req,res){
-  db.Watch.destroy({where: {id: req.params.id}})
+  db.watch.destroy({where: {id: req.params.id}})
   .then(function(deleteCount){
     res.send({deleted: deleteCount})
   })
@@ -101,7 +122,7 @@ app.get("/movies/:imdb", function(req, res){
     if (!error && response.statusCode == 200) {
       var results = JSON.parse(body);
       // console.log(results);
-      db.Watch.count({where: {imdb_code:results.imdbID}}).then(function(foundItemCount){
+      db.watch.count({where: {imdb_code:results.imdbID}}).then(function(foundItemCount){
         var wasFound= foundItemCount > 0;
         res.render("movies/id", {movieFound: wasFound, item: results})
     })
