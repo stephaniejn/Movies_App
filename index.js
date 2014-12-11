@@ -1,18 +1,18 @@
-var methodOverride = require('method-override')
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
 var db = require('./models');
-
-// override with POST having ?_method=DELETE
-app.use(methodOverride('_method'))
-
-app.use(bodyParser.urlencoded({extended: false}))
-
-app.use(express.static(__dirname + '/public'));
-
+var session = require('express-session');
 app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Root Page
 app.get("/", function(req,res){
