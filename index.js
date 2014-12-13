@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var db = require('./models');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
+var flash = require('connect-flash');
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -13,6 +15,14 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.use(flash());
+
+// Alerts - set up for each page (need partial alerts ejs file)
+app.get('*', function(req,res,next){
+    var alerts = req.flash();
+    res.locals.alerts = alerts
+    next();
+});
 
 // Root Page
 app.get("/", function(req,res){
@@ -22,16 +32,23 @@ app.get("/", function(req,res){
 // Request info
 app.get("/movies/search", function(req, res)
 	{
-var searchTerm = req.query.title
-  request("http://www.omdbapi.com/?s=" + searchTerm, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var stuff = JSON.parse(body);
-      res.render("movies/search", stuff)
-    } else {
-      res.render("errorPage")
-    }
-});
-})
+    var searchTerm = req.query.title
+    request("http://www.omdbapi.com/?s=" + searchTerm, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var stuff = JSON.parse(body);
+        
+        if(stuff.Error){
+          req.flash('danger','you fail at everything')
+          res.redirect("/")
+        } else{ 
+          res.render("movies/search", stuff)
+        }
+
+      } else {
+        res.render("errorPage")
+      }
+    });
+  })
 
 
 // Ajax - Add Info to Watch List
@@ -60,6 +77,7 @@ app.post("/movies/watchlist/:id/comments",function(req,res){
   db.watch.find({where: {id: req.params.id}}).then(function(newComment){
   newComment.createComment({text: req.body.text, watch_id:req.params.id})
   .then(function(theComment){
+    req.flash('info','IT WORKED!')
     res.redirect("comments")
   })
 })

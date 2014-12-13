@@ -24,16 +24,16 @@
         
         <ul id="nav1" class="navbar-form navbar-left">
           <form action = '/movies/search' method = 'get' id="form">
-           <input type = 'text' name = 'title' placeholder= 'Film Title'>
-           <input type = 'submit' value = 'Search for Film'>
+           <input type = 'text' name = 'title' class="form-control" placeholder= 'Film Title'>
+           <input type = 'submit' class="btn btn-default" value = 'Search for Film'>
          </form>
        </ul>
        <ul id="nav2" class="nav navbar-nav navbar-right">
         <li> <form method="link" action="/movies/watchlist">
-         <input type="submit" value="Go to Watch List">
+         <input type="submit" class="btn btn-default" value="Go to Watch List">
        </form></li>
        <li> <form id="home" method="link" action="/">
-        <input type="submit" value="Head Home">
+        <input type="submit" class="btn btn-default" value="Head Home">
       </form></li>
     </ul>
   </div><!-- /.navbar-collapse -->
@@ -43,3 +43,4 @@
 
 <div class="container">
 
+<% include alerts %>
