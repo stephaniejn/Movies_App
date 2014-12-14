@@ -77,7 +77,7 @@ app.post("/movies/watchlist/:id/comments",function(req,res){
   db.watch.find({where: {id: req.params.id}}).then(function(newComment){
   newComment.createComment({text: req.body.text, watch_id:req.params.id})
   .then(function(theComment){
-    req.flash('info','IT WORKED!')
+    req.flash('danger','Thanks for your comment!')
     res.redirect("comments")
   })
 })
